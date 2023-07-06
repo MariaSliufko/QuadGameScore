@@ -1,0 +1,124 @@
+﻿@using QuadGameScore.Data;
+@using QuadGameScore.Models;
+@using Blazorise;
+@page "/player"
+@inject QuadGameScoreDbContext _dbContext;
+@inject QuadGameScoreRepository repository;
+
+<h3>Spelarlista</h3>
+
+
+<!-- Visa spelarlista -->
+@if (players != null && players.Any())
+{
+    <Table>
+        <TableHeader>
+            <TableRow>
+                <TableHeaderCell>Namn</TableHeaderCell>
+                <TableHeaderCell>Ålder</TableHeaderCell>
+                <TableHeaderCell>Poäng</TableHeaderCell>
+                <TableHeaderCell></TableHeaderCell>
+            </TableRow>
+        </TableHeader>
+        <TableBody>
+
+            @foreach (var player in players)
+            {
+                <TableRow>
+                    <TableColumn>@player.Name</TableColumn>
+                    <TableColumn>@player.Age</TableColumn>
+                    <TableColumn>@GetPlayerPoints(player)</TableColumn>
+                    <TableColumn>
+                        <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => RemovePlayer(player)">Ta bort</Blazorise.Button>
+                    </TableColumn>
+                </TableRow>
+            }
+        </TableBody>
+    </Table>
+}
+else
+{
+    <p>Inga spelare hittades.</p>
+}
+
+<!-- Lägg till spelare -->
+<h4>Lägg till spelare</h4>
+<div>
+    <label for="name">Namn:</label>
+    <input type="text" id="name" @bind="@newPlayer.Name" />
+
+    <label for="age">Ålder:</label>
+    <input type="number" id="age" @bind="@newPlayer.Age" />
+
+    <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => AddPlayer()" class="btn btn-primary">
+        Lägg till
+    </Blazorise.Button>
+
+</div>
+
+<!-- Redigera spelare -->
+@if (editPlayer != null)
+{
+    <h4>Redigera spelare</h4>
+    <div>
+        <label for="editName">Namn:</label>
+        <input type="text" id="editName" @bind="@editPlayer.Name" />
+
+        <label for="editAge">Ålder:</label>
+        <input type="number" id="editAge" @bind="@editPlayer.Age" />
+
+        <button @onclick="UpdatePlayer">Spara</button>
+        <button @onclick="CancelEdit">Avbryt</button>
+    </div>
+}
+
+
+
+@code {
+    private List<Player>? players;
+    private Player newPlayer = new Player(0, "", 0);
+    private Player? editPlayer;
+
+    protected override void OnInitialized()
+    {
+        players = repository.GetPlayers();
+    }
+
+    private void AddPlayer()
+    {
+        repository.AddPlayer(newPlayer);
+        newPlayer = new Player(0, "", 0); // Reset newPlayer
+        players = repository.GetPlayers();
+    }
+    private void EditPlayer(Player player)
+    {
+        editPlayer = player;
+    }
+
+    private void UpdatePlayer()
+    {
+        repository.UpdatePlayer(editPlayer);
+        _dbContext.SaveChanges();
+        editPlayer = null;
+        players = repository.GetPlayers();
+    }
+
+    private void CancelEdit()
+    {
+        editPlayer = null;
+    }
+
+    private void RemovePlayer(Player player)
+    {
+        repository.RemovePlayer(player);
+        players = repository.GetPlayers();
+    }
+
+    private int GetPlayerPoints(Player player)
+    {
+        // Anropa repository för att hämta spelarens poäng
+        var points = repository.GetPlayerPoints(player.PlayerId);
+        return points;
+    }
+
+}

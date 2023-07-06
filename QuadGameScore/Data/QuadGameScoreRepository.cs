@@ -55,6 +55,7 @@ namespace QuadGameScore.Data
             _dbContext.SaveChanges();
         }
 
+
         //public void UpdateEvent(Event updatedEvent)
         //{
 
@@ -68,9 +69,9 @@ namespace QuadGameScore.Data
 
         //}
 
-        public void RemoveEvent(Game @event)
+        public void RemoveGame(Game @game)
         {
-            _dbContext.Games.Remove(@event);
+            _dbContext.Games.Remove(@game);
             _dbContext.SaveChanges();
         }
 

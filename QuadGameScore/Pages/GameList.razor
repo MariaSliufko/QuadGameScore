@@ -1,0 +1,95 @@
+﻿@using QuadGameScore.Data;
+@using QuadGameScore.Models;
+@using Blazorise;
+@using Blazorise.Bootstrap;
+@using Blazorise.Icons.FontAwesome;
+@page "/gameList"
+@inject QuadGameScoreDbContext _dbContext;
+@inject QuadGameScoreRepository repository;
+@inject NavigationManager NavigationManager;
+
+
+<h3>Grenar</h3>
+
+<!-- Visa lista på event -->
+@if (games != null && games.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Namn</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var gme in games)
+            {
+                <tr>
+                    <td>@gme.Name</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm" @onclick="() => RemoveGame(gme)">Ta bort</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Inga spel hittades.</p>
+}
+
+<!-- Lägg till händelse -->
+<h4>Lägg till spel</h4>
+<div class="mb-3">
+    <label for="gameName" class="form-label">Gren:</label>
+    <div class="input-group">
+        <input type="text" id="gameName" class="form-control" @bind="@newGameName" />
+        <button class="btn btn-primary" @onclick="AddEvent">Lägg till</button>
+    </div>
+</div>
+
+
+
+@code {
+    private List<Game> games;
+    private string newGameName;
+    private Game newGame;
+
+    protected override void OnInitialized()
+    {
+        games = repository.GetGames();
+    }
+
+    
+    // Metoder för händelseoperationer
+    public List<Game> GetGames()
+    {
+        return _dbContext.Games.ToList();
+    }
+
+    public void AddGame(Game newGame)
+    {
+        _dbContext.Games.Add(newGame);
+        _dbContext.SaveChanges();
+    }
+
+    private void AddEvent()
+    {
+        if (!string.IsNullOrEmpty(newGameName))
+        {
+            var newGame = new Game(newGameName);
+            repository.AddGame(newGame);
+            newGameName = string.Empty;
+            games = repository.GetGames();
+        }
+    }
+
+    private void RemoveGame(Game game)
+    {
+        repository.RemoveGame(game);
+        games = repository.GetGames();
+    }
+
+}
+

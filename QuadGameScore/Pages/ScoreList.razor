@@ -1,0 +1,112 @@
+﻿@using QuadGameScore.Data;
+@using QuadGameScore.Models;
+@using Blazorise;
+@page "/score"
+@inject QuadGameScoreDbContext _dbContext;
+@inject QuadGameScoreRepository repository;
+@inject NavigationManager NavigationManager;
+
+
+<h3>Poängtilldelning</h3>
+
+<!-- Visa spelarlista -->
+<h4>Spelare</h4>
+@if (players != null && players.Any())
+{
+    <ul>
+        @foreach (var player in players)
+        {
+            <li>
+                @player.Name
+                <span class="points">@player.Points</span> Poäng
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Inga spelare hittades.</p>
+}
+
+<!-- Visa lista över evenemang -->
+<h4>Evenemang</h4>
+@if (games != null && games.Any())
+{
+    <ul>
+        @foreach (var evnt in games)
+        {
+            <li>@evnt.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Inga evenemang hittades.</p>
+}
+
+<!-- Inmatningsfält för spelare, evenemang och poäng -->
+<h4>Tilldela poäng</h4>
+<div>
+    <label for="playerName">Spelare:</label>
+    <input type="text" id="playerName" @bind="@playerName" />
+
+    <label for="eventName">Evenemang:</label>
+    <input type="text" id="eventName" @bind="@gameName" />
+
+    <label for="points">Poäng:</label>
+    <input type="number" id="points" @bind="@points" />
+
+    <button @onclick="AssignPoints">Tilldela</button>
+</div>
+
+
+
+<button @onclick="FinishQuadathlon">Avsluta 4-kampen</button>
+
+@code {
+    private List<Player> players;
+    private List<Game> games;
+    private string playerName;
+    private string gameName;
+    private int points;
+
+    protected override void OnInitialized()
+    {
+        // Hämta spelarlista och lista över evenemang från databasen
+        players = repository.GetPlayers();
+        games = repository.GetGames();
+    }
+
+    private void AssignPoints()
+    {
+        // Hitta spelaren baserat på spelarnamnet
+        var player = players.FirstOrDefault(p => p.Name == playerName);
+
+        // Hitta evenemanget baserat på evenemangsnamnet
+        var gme = games.FirstOrDefault(e => e.Name == gameName);
+
+        // Kontrollera om spelaren och evenemanget hittades
+        if (player != null && gme != null)
+        {
+            // Tilldela poäng till spelaren för det angivna evenemanget
+            repository.AssignPointsToPlayer(player.PlayerId, gme.GameId, points);
+
+            // Uppdatera poängen i spelarobjektet
+            player.Points += points;
+        }
+
+        // Återställ inmatningsfälten
+        playerName = string.Empty;
+        gameName = string.Empty;
+        points = 0;
+    }
+
+    private void FinishQuadathlon()
+    {
+        // Anropa metoden i repository för att avsluta 4-kampen och räkna ut vinnaren
+        repository.GetWinners();
+
+        // Navigera till slutskärmen
+        NavigationManager.NavigateTo("/winner");
+    }
+}
