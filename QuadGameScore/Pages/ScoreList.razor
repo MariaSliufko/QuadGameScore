@@ -47,21 +47,33 @@ else
 <!-- Inmatningsfält för spelare, evenemang och poäng -->
 <h4>Tilldela poäng</h4>
 <div>
-    <label for="playerName">Spelare:</label>
-    <input type="text" id="playerName" @bind="@playerName" />
+    <Blazorise.Field>
+        <Blazorise.FieldLabel for="playerName">Spelare:</Blazorise.FieldLabel>
+        <Blazorise.Control>
+            <input type="text" id="playerName" class="form-control" @bind="@playerName" />
+        </Blazorise.Control>
+    </Blazorise.Field>
 
-    <label for="eventName">Evenemang:</label>
-    <input type="text" id="eventName" @bind="@gameName" />
+    <Blazorise.Field>
+        <Blazorise.FieldLabel for="eventName">Evenemang:</Blazorise.FieldLabel>
+        <Blazorise.Control>
+            <input type="text" id="eventName" class="form-control" @bind="@gameName" />
+        </Blazorise.Control>
+    </Blazorise.Field>
 
-    <label for="points">Poäng:</label>
-    <input type="number" id="points" @bind="@points" />
+    <Blazorise.Field>
+        <Blazorise.FieldLabel for="points">Poäng:</Blazorise.FieldLabel>
+        <Blazorise.Control>
+            <input type="number" id="points" class="form-control" @bind="@points" />
+        </Blazorise.Control>
+    </Blazorise.Field>
 
-    <button @onclick="AssignPoints">Tilldela</button>
+    <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="AssignPoints">Tilldela</Blazorise.Button>
 </div>
 
 
 
-<button @onclick="FinishQuadathlon">Avsluta 4-kampen</button>
+<button class="btn btn-primary" @onclick="FinishQuadathlon">Avsluta 4-kampen</button>
 
 @code {
     private List<Player> players;

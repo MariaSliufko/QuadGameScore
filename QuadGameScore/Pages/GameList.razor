@@ -40,14 +40,17 @@ else
 }
 
 <!-- Lägg till händelse -->
-<h4>Lägg till spel</h4>
-<div class="mb-3">
-    <label for="gameName" class="form-label">Gren:</label>
-    <div class="input-group">
+<Blazorise.Field>
+    <Blazorise.FieldLabel for="gameName">Gren:</Blazorise.FieldLabel>
+    <Blazorise.Control>
         <input type="text" id="gameName" class="form-control" @bind="@newGameName" />
+    </Blazorise.Control>
+    <Blazorise.FieldHelp>Example help text</Blazorise.FieldHelp>
+    <Blazorise.FieldHelpValid>Bågskytte</Blazorise.FieldHelpValid>
+    <Blazorise.FieldButton>
         <button class="btn btn-primary" @onclick="AddEvent">Lägg till</button>
-    </div>
-</div>
+    </Blazorise.FieldButton>
+</Blazorise.Field>
 
 
 
@@ -61,7 +64,7 @@ else
         games = repository.GetGames();
     }
 
-    
+
     // Metoder för händelseoperationer
     public List<Game> GetGames()
     {
