@@ -44,17 +44,25 @@ else
 <!-- Lägg till spelare -->
 <h4>Lägg till spelare</h4>
 <div>
-    <label for="name">Namn:</label>
-    <input type="text" id="name" @bind="@newPlayer.Name" />
+    <Blazorise.Field>
+        <Blazorise.FieldLabel for="name">Namn:</Blazorise.FieldLabel>
+        <Blazorise.Control>
+            <input type="text" id="name" @bind="@newPlayer.Name" class="form-control" />
+        </Blazorise.Control>
+    </Blazorise.Field>
 
-    <label for="age">Ålder:</label>
-    <input type="number" id="age" @bind="@newPlayer.Age" />
+    <Blazorise.Field>
+        <Blazorise.FieldLabel for="age">Ålder:</Blazorise.FieldLabel>
+        <Blazorise.Control>
+            <input type="number" id="age" @bind="@newPlayer.Age" class="form-control" />
+        </Blazorise.Control>
+    </Blazorise.Field>
 
     <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => AddPlayer()" class="btn btn-primary">
         Lägg till
     </Blazorise.Button>
-
 </div>
+
 
 <!-- Redigera spelare -->
 @if (editPlayer != null)
