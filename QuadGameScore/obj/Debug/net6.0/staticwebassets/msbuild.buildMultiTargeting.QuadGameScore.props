@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/QuadGameScore.props" />
+</Project>
