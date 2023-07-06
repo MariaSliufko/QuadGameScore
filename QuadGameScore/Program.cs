@@ -5,6 +5,7 @@ using QuadGameScore.Data;
 using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,7 +23,22 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 
+// Configure DbContext for in-memory database
+builder.Services.AddDbContext<QuadGameScoreDbContext>(options =>
+{
+    options.UseInMemoryDatabase("QuadGameScoreDb");
+});
+
+
 var app = builder.Build();
+
+// Ensure the database is created and apply any pending migrations
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var dbContext = services.GetRequiredService<QuadGameScoreDbContext>();
+    dbContext.Database.EnsureCreated(); // Create the database if it doesn't exist
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

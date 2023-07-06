@@ -44,3 +44,12 @@
 /Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/obj/Debug/net6.0/QuadGameScore.pdb
 /Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/obj/Debug/net6.0/QuadGameScore.genruntimeconfig.cache
 /Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/obj/Debug/net6.0/ref/QuadGameScore.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.InMemory.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Caching.Abstractions.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Caching.Memory.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
