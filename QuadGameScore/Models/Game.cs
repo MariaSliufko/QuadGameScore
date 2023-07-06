@@ -9,6 +9,7 @@ namespace QuadGameScore.Models
             [Key]
             public int GameId { get; set; } // Primärnyckel (ID)
 
+            [Required(ErrorMessage = "Name is required")]
             public string Name { get; set; }
 
             public Game(string name)

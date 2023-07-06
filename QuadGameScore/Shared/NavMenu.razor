@@ -1,37 +1,49 @@
-﻿<Bar Breakpoint="Breakpoint.Desktop" NavigationBreakpoint="Breakpoint.Tablet"
-     ThemeContrast="ThemeContrast.Dark"
-     Mode="BarMode.VerticalInline" CollapseMode="BarCollapseMode.Small">
-    <BarToggler />
-    <BarBrand>
-        <BarItem>
-            <BarLink To="">
+﻿<Blazorise.Bar Breakpoint="Breakpoint.Desktop" NavigationBreakpoint="Breakpoint.Tablet"
+               ThemeContrast="ThemeContrast.Dark"
+               Mode="BarMode.VerticalInline" CollapseMode="BarCollapseMode.Small">
+    <Blazorise.BarToggler />
+    <Blazorise.BarBrand>
+        <Blazorise.BarItem>
+            <Blazorise.BarLink To="">
                 QuadGameScore
-            </BarLink>
-        </BarItem>
-    </BarBrand>
-    <BarMenu>
-        <BarStart>
-            <BarItem>
-                <BarLink To="">
-                    <BarIcon IconName="IconName.Dashboard" />
+            </Blazorise.BarLink>
+        </Blazorise.BarItem>
+    </Blazorise.BarBrand>
+    <Blazorise.BarMenu>
+        <Blazorise.BarStart>
+            <Blazorise.BarItem>
+                <Blazorise.BarLink To="">
+                    <Blazorise.BarIcon IconName="IconName.Dashboard" />
                     Home
-                </BarLink>
-            </BarItem>
-            <BarItem>
-                <BarLink To="counter">
-                    <BarIcon IconName="IconName.Edit" />
-                    Counter
-                </BarLink>
-            </BarItem>
-            <BarItem>
-                <BarLink To="fetchdata">
-                    <BarIcon IconName="IconName.Dashboard" />
-                    Fetch data
-                </BarLink>
-            </BarItem>
-        </BarStart>
-        <BarEnd>
+                </Blazorise.BarLink>
+            </Blazorise.BarItem>
+            <Blazorise.BarItem>
+                <Blazorise.BarLink To="player">
+                    <Blazorise.BarIcon IconName="IconName.Edit" />
+                    Player
+                </Blazorise.BarLink>
+            </Blazorise.BarItem>
+            <Blazorise.BarItem>
+                <Blazorise.BarLink To="gamelist">
+                    <Blazorise.BarIcon IconName="IconName.Dashboard" />
+                    Games
+                </Blazorise.BarLink>
+            </Blazorise.BarItem>
+            <Blazorise.BarItem>
+                <Blazorise.BarLink To="score">
+                    <Blazorise.BarIcon IconName="IconName.Dashboard" />
+                    Score
+                </Blazorise.BarLink>
+            </Blazorise.BarItem>
+            <Blazorise.BarItem>
+                <Blazorise.BarLink To="winner">
+                    <Blazorise.BarIcon IconName="IconName.Dashboard" />
+                    Top 3
+                </Blazorise.BarLink>
+            </Blazorise.BarItem>
+        </Blazorise.BarStart>
+        <Blazorise.BarEnd>
 
-        </BarEnd>
-    </BarMenu>
-</Bar>
+        </Blazorise.BarEnd>
+    </Blazorise.BarMenu>
+</Blazorise.Bar>
