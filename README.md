@@ -40,7 +40,7 @@ The application uses the Microsoft.EntityFrameworkCore.InMemory database provide
 To run the QuadGameScore app, follow these steps:
 
 1. Install the latest version of Visual Studio (or any preferred IDE) and .NET Core 6.0 SDK.
-2. Clone the repository: `git clone https://github.com/your-username/QuadGameScore.git`
+2. Clone the repository: `git clone https://github.com/mariasliufko/QuadGameScore.git`
 3. Open the project in Visual Studio.
 4. Build and run the application.
 
