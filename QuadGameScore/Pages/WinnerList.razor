@@ -1,27 +1,33 @@
 ﻿@using QuadGameScore.Data;
 @using QuadGameScore.Models;
 @using Blazorise;
+@using Blazorise.Bootstrap
 @page "/winner"
 @inject QuadGameScoreDbContext _dbContext;
 @inject QuadGameScoreRepository repository;
 
-<h3>Slutskärm</h3>
+<Card>
+    <CardBody class="text-center">
+        <img src="css/2.jpeg" alt="Winner Image" class="img-fluid" style="max-width: 300px;" />
 
-@if (winners != null && winners.Any())
-{
-    <h4>Vinnare</h4>
-    <ol>
-        @foreach (var winner in winners)
+        <h3 class="text-primary">Slutskärm</h3>
+
+        @if (winners != null && winners.Any())
         {
-            <li>@winner.Name - @winner.Points poäng</li>
+            <h4>Top 3 Vinnare</h4>
+            <ol class="list-unstyled">
+                @foreach (var winner in winners)
+                {
+                    <li>@winner.Name - @winner.Points poäng</li>
+                }
+            </ol>
         }
-    </ol>
-}
-else
-{
-    <p>Inga vinnare hittades.</p>
-}
-
+        else
+        {
+            <p>Inga vinnare hittades.</p>
+        }
+    </CardBody>
+</Card>
 
 
 @code {
@@ -29,6 +35,7 @@ else
 
     protected override void OnInitialized()
     {
-        winners = repository.GetWinners();
+        var allWinners = repository.GetWinners();
+        winners = allWinners.OrderByDescending(w => w.Points).Take(3).ToList();
     }
 }

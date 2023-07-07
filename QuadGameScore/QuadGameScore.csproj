@@ -12,6 +12,7 @@
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.2.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.8" />
+    <PackageReference Include="Blazorise.Animate" Version="1.2.4" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\" />
