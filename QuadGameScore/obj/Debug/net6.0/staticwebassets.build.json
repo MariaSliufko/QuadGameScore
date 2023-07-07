@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JOUrahf/9Ncg8GtWh29M5GL47kNsy8/XrF0b2S2i/PM=",
+  "Hash": "nUpXcSfWBHjl7uyOTxf60sG+wBr+OGpk9ke9+6nJno4=",
   "Source": "QuadGameScore",
   "BasePath": "_content/QuadGameScore",
   "Mode": "Default",
@@ -16,6 +16,40 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "/Users/mariasliufko/.nuget/packages/blazorise.animate/1.2.4/staticwebassets/aos.css",
+      "SourceId": "Blazorise.Animate",
+      "SourceType": "Package",
+      "ContentRoot": "/Users/mariasliufko/.nuget/packages/blazorise.animate/1.2.4/staticwebassets/",
+      "BasePath": "_content/Blazorise.Animate",
+      "RelativePath": "aos.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/mariasliufko/.nuget/packages/blazorise.animate/1.2.4/staticwebassets/aos.css"
+    },
+    {
+      "Identity": "/Users/mariasliufko/.nuget/packages/blazorise.animate/1.2.4/staticwebassets/blazorise.animate.js",
+      "SourceId": "Blazorise.Animate",
+      "SourceType": "Package",
+      "ContentRoot": "/Users/mariasliufko/.nuget/packages/blazorise.animate/1.2.4/staticwebassets/",
+      "BasePath": "_content/Blazorise.Animate",
+      "RelativePath": "blazorise.animate.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/mariasliufko/.nuget/packages/blazorise.animate/1.2.4/staticwebassets/blazorise.animate.js"
+    },
     {
       "Identity": "/Users/mariasliufko/.nuget/packages/blazorise.bootstrap/1.2.4/staticwebassets/blazorise.bootstrap.css",
       "SourceId": "Blazorise.Bootstrap",
@@ -695,6 +729,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/obj/Debug/net6.0/scopedcss/projectbundle/QuadGameScore.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/wwwroot/css/2.jpeg",
+      "SourceId": "QuadGameScore",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/wwwroot/",
+      "BasePath": "_content/QuadGameScore",
+      "RelativePath": "css/2.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/2.jpeg"
     },
     {
       "Identity": "/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/wwwroot/css/bootstrap/bootstrap.min.css",

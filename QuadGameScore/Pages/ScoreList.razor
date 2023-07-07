@@ -1,16 +1,15 @@
-﻿@using QuadGameScore.Data;
-@using QuadGameScore.Models;
-@using Blazorise;
+﻿@using QuadGameScore.Data
+@using QuadGameScore.Models
+@using Blazorise
 @page "/score"
-@inject QuadGameScoreDbContext _dbContext;
-@inject QuadGameScoreRepository repository;
-@inject NavigationManager NavigationManager;
-
+@inject QuadGameScoreDbContext _dbContext
+@inject QuadGameScoreRepository repository
+@inject NavigationManager NavigationManager
 
 <h3>Poängtilldelning</h3>
 
 <!-- Visa spelarlista -->
-<h4>Spelare</h4>
+<h4 class="text-primary">Spelare</h4>
 @if (players != null && players.Any())
 {
     <ul>
@@ -29,13 +28,13 @@ else
 }
 
 <!-- Visa lista över evenemang -->
-<h4>Evenemang</h4>
+<h4 class="text-primary">Evenemang</h4>
 @if (games != null && games.Any())
 {
     <ul>
-        @foreach (var evnt in games)
+        @foreach (var game in games)
         {
-            <li>@evnt.Name</li>
+            <li>@game.Name</li>
         }
     </ul>
 }
@@ -45,35 +44,39 @@ else
 }
 
 <!-- Inmatningsfält för spelare, evenemang och poäng -->
-<h4>Tilldela poäng</h4>
-<div>
-    <Blazorise.Field>
-        <Blazorise.FieldLabel for="playerName">Spelare:</Blazorise.FieldLabel>
-        <Blazorise.Control>
-            <input type="text" id="playerName" class="form-control" @bind="@playerName" />
-        </Blazorise.Control>
-    </Blazorise.Field>
+<h4 class="text-primary">Tilldela poäng</h4>
 
-    <Blazorise.Field>
-        <Blazorise.FieldLabel for="eventName">Evenemang:</Blazorise.FieldLabel>
-        <Blazorise.Control>
-            <input type="text" id="eventName" class="form-control" @bind="@gameName" />
-        </Blazorise.Control>
-    </Blazorise.Field>
+<Columns>
+    <Column Size="ColumnSize.Is6">
+        <Blazorise.Field>
+            <Blazorise.FieldLabel for="playerName">Spelare:</Blazorise.FieldLabel>
+            <Blazorise.Control>
+                <input type="text" id="playerName" class="form-control" @bind="@playerName" />
+            </Blazorise.Control>
+        </Blazorise.Field>
 
-    <Blazorise.Field>
-        <Blazorise.FieldLabel for="points">Poäng:</Blazorise.FieldLabel>
-        <Blazorise.Control>
-            <input type="number" id="points" class="form-control" @bind="@points" />
-        </Blazorise.Control>
-    </Blazorise.Field>
+        <Blazorise.Field>
+            <Blazorise.FieldLabel for="eventName">Evenemang:</Blazorise.FieldLabel>
+            <Blazorise.Control>
+                <input type="text" id="eventName" class="form-control" @bind="@gameName" />
+            </Blazorise.Control>
+        </Blazorise.Field>
 
-    <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="AssignPoints">Tilldela</Blazorise.Button>
-</div>
+        <Blazorise.Field>
+            <Blazorise.FieldLabel for="points">Poäng:</Blazorise.FieldLabel>
+            <Blazorise.Control>
+                <input type="number" id="points" class="form-control" @bind="@points" />
+            </Blazorise.Control>
+        </Blazorise.Field>
+    </Column>
+
+    <Column Size="ColumnSize.Is6">
+        <Blazorise.Button Color="Color.Primary" Clicked="AssignPoints">Tilldela</Blazorise.Button>
+        <Blazorise.Button Color="Color.Primary" Clicked="FinishQuadathlon">Avsluta fyrkampen</Blazorise.Button>
+    </Column>
+</Columns>
 
 
-
-<button class="btn btn-primary" @onclick="FinishQuadathlon">Avsluta 4-kampen</button>
 
 @code {
     private List<Player> players;
@@ -95,13 +98,13 @@ else
         var player = players.FirstOrDefault(p => p.Name == playerName);
 
         // Hitta evenemanget baserat på evenemangsnamnet
-        var gme = games.FirstOrDefault(e => e.Name == gameName);
+        var game = games.FirstOrDefault(g => g.Name == gameName);
 
         // Kontrollera om spelaren och evenemanget hittades
-        if (player != null && gme != null)
+        if (player != null && game != null)
         {
             // Tilldela poäng till spelaren för det angivna evenemanget
-            repository.AssignPointsToPlayer(player.PlayerId, gme.GameId, points);
+            repository.AssignPointsToPlayer(player.PlayerId, game.GameId, points);
 
             // Uppdatera poängen i spelarobjektet
             player.Points += points;

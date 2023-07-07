@@ -27,6 +27,31 @@
           "buildMultiTargeting/Blazorise.props": {}
         }
       },
+      "Blazorise.Animate/1.2.4": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "1.2.4",
+          "Microsoft.AspNetCore.Components": "6.0.18",
+          "Microsoft.AspNetCore.Components.Web": "6.0.18",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.4"
+        },
+        "compile": {
+          "lib/net6.0/Blazorise.Animate.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Blazorise.Animate.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Blazorise.Animate.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Animate.props": {}
+        }
+      },
       "Blazorise.Bootstrap/1.2.4": {
         "type": "package",
         "dependencies": {
@@ -478,6 +503,29 @@
         "staticwebassets/vendors/inputmask.js",
         "staticwebassets/vendors/jsencrypt.js",
         "staticwebassets/vendors/sha512.js"
+      ]
+    },
+    "Blazorise.Animate/1.2.4": {
+      "sha512": "6Od/ZGhK6o0ePFfJbAXzcALNajdkfOWWoJ59KBhHwJDueBVf+kaDM4AgPblV+69/ax5B9FEcksDVghlp4PPMPA==",
+      "type": "package",
+      "path": "blazorise.animate/1.2.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.animate.1.2.4.nupkg.sha512",
+        "blazorise.animate.nuspec",
+        "build/Blazorise.Animate.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Animate.props",
+        "buildTransitive/Blazorise.Animate.props",
+        "lib/net6.0/Blazorise.Animate.dll",
+        "lib/net6.0/Blazorise.Animate.xml",
+        "lib/net7.0/Blazorise.Animate.dll",
+        "lib/net7.0/Blazorise.Animate.xml",
+        "staticwebassets/aos.css",
+        "staticwebassets/blazorise.animate.js"
       ]
     },
     "Blazorise.Bootstrap/1.2.4": {
@@ -1025,6 +1073,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Blazorise >= 1.2.4",
+      "Blazorise.Animate >= 1.2.4",
       "Blazorise.Bootstrap >= 1.2.4",
       "Blazorise.Icons.FontAwesome >= 1.2.4",
       "Microsoft.EntityFrameworkCore >= 7.0.8",
@@ -1074,6 +1123,10 @@
         "targetAlias": "net6.0",
         "dependencies": {
           "Blazorise": {
+            "target": "Package",
+            "version": "[1.2.4, )"
+          },
+          "Blazorise.Animate": {
             "target": "Package",
             "version": "[1.2.4, )"
           },

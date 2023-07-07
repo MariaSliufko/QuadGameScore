@@ -53,3 +53,4 @@
 /Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Logging.dll
 /Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Options.dll
 /Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
+/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/bin/Debug/net6.0/Blazorise.Animate.dll

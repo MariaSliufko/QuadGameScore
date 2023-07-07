@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/QuadGameScore.bundle.scp.css"
     },
     {
+      "Id": "/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/wwwroot/css/2.jpeg",
+      "PackagePath": "staticwebassets/css/2.jpeg"
+    },
+    {
       "Id": "/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/wwwroot/css/bootstrap/bootstrap.min.css",
       "PackagePath": "staticwebassets/css/bootstrap/bootstrap.min.css"
     },
