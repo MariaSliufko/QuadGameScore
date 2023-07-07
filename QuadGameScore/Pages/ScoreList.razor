@@ -6,42 +6,67 @@
 @inject QuadGameScoreRepository repository
 @inject NavigationManager NavigationManager
 
-<h3>Poängtilldelning</h3>
+<h3 class="text-primary mb-5">Poängtilldelning</h3>
 
 <!-- Visa spelarlista -->
-<h4 class="text-primary">Spelare</h4>
-@if (players != null && players.Any())
-{
-    <ul>
-        @foreach (var player in players)
+<div class="row">
+    <div class="col-md-6">
+        <h4 class="text-primary">Spelare</h4>
+        @if (players != null && players.Any())
         {
-            <li>
-                @player.Name
-                <span class="points">@player.Points</span> Poäng
-            </li>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Namn</th>
+                        <th scope="col">Poäng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var player in players)
+                    {
+                        <tr>
+                            <td>@player.Name</td>
+                            <td>@player.Points</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-    </ul>
-}
-else
-{
-    <p>Inga spelare hittades.</p>
-}
+        else
+        {
+            <p>Inga spelare hittades.</p>
+        }
+    </div>
 
-<!-- Visa lista över evenemang -->
-<h4 class="text-primary">Evenemang</h4>
-@if (games != null && games.Any())
-{
-    <ul>
-        @foreach (var game in games)
+
+
+    <!-- Visa lista över evenemang -->
+    <div class="col-md-6 mb-5">
+        <h4 class="text-primary">Evenemang</h4>
+        @if (games != null && games.Any())
         {
-            <li>@game.Name</li>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Namn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var game in games)
+                    {
+                        <tr>
+                            <td>@game.Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         }
-    </ul>
-}
-else
-{
-    <p>Inga evenemang hittades.</p>
-}
+        else
+        {
+            <p>Inga evenemang hittades.</p>
+        }
+    </div>
+</div>
 
 <!-- Inmatningsfält för spelare, evenemang och poäng -->
 <h4 class="text-primary">Tilldela poäng</h4>

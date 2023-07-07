@@ -6,76 +6,85 @@
 @inject QuadGameScoreDbContext _dbContext;
 @inject QuadGameScoreRepository repository;
 
-<h3 class="text-primary">Spelarlista</h3>
+<h3 class="text-primary mb-5">Spelarlista</h3>
 
 
 <!-- Visa spelarlista -->
-@if (players != null && players.Any())
-{
-    <Table>
-        <TableHeader>
-            <TableRow>
-                <TableHeaderCell>Namn</TableHeaderCell>
-                <TableHeaderCell>Ålder</TableHeaderCell>
-                <TableHeaderCell>Poäng</TableHeaderCell>
-                <TableHeaderCell></TableHeaderCell>
-            </TableRow>
-        </TableHeader>
-        <TableBody>
+<div class="row mb-5">
+    <div class="col-md-6">
+        <h4 class="text-primary">Spelare</h4>
 
-            @foreach (var player in players)
-            {
-                <TableRow>
-                    <TableColumn>@player.Name</TableColumn>
-                    <TableColumn>@player.Age</TableColumn>
-                    <TableColumn>@GetPlayerPoints(player)</TableColumn>
-                    <TableColumn>
-                        <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => RemovePlayer(player)">Ta bort</Blazorise.Button>
-                    </TableColumn>
-                </TableRow>
-            }
-        </TableBody>
-    </Table>
-}
-else
-{
-    <p>Inga spelare hittades.</p>
-}
+        @if (players != null && players.Any())
+        {
+            <Table class="table table-striped">
+                <TableHeader>
+                    <TableRow>
+                        <TableHeaderCell>Namn</TableHeaderCell>
+                        <TableHeaderCell>Ålder</TableHeaderCell>
+                        <TableHeaderCell>Poäng</TableHeaderCell>
+                        <TableHeaderCell></TableHeaderCell>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
 
-<!-- Lägg till spelare -->
-<h4 class="text-primary">Ny Spelare</h4>
+                    @foreach (var player in players)
+                    {
+                        <TableRow>
+                            <td>@player.Name</td>
+                            <td>@player.Age</td>
+                            <td>@GetPlayerPoints(player)</td>
+                            <td>
+                                <Blazorise.Button Color="Color.Danger" Clicked="() => RemovePlayer(player)">Ta bort</Blazorise.Button>
+                            </td>
+                        </TableRow>
+                    }
+                </TableBody>
+            </Table>
+        }
+        else
+        {
+            <p>Inga spelare hittades.</p>
+        }
+    </div>
+    <!-- Lägg till spelare -->
+    <div class="col-md-6 mb-5">
+        <h4 class="text-primary">Ny Spelare</h4>
 
-@*<div>
-        <Blazorise.Field>
-            <Blazorise.FieldLabel for="name">Namn:</Blazorise.FieldLabel>
-            <Blazorise.Control>
-                <input type="text" id="name" @bind="@newPlayer.Name" class="form-control" />
-            </Blazorise.Control>
-        </Blazorise.Field>
+        @*<div>
+                <Blazorise.Field>
+                    <Blazorise.FieldLabel for="name">Namn:</Blazorise.FieldLabel>
+                    <Blazorise.Control>
+                        <input type="text" id="name" @bind="@newPlayer.Name" class="form-control" />
+                    </Blazorise.Control>
+                </Blazorise.Field>
 
-        <Blazorise.Field>
-            <Blazorise.FieldLabel for="age">Ålder:</Blazorise.FieldLabel>
-            <Blazorise.Control>
-                <input type="number" id="age" @bind="@newPlayer.Age" class="form-control" />
-            </Blazorise.Control>
-        </Blazorise.Field>
+                <Blazorise.Field>
+                    <Blazorise.FieldLabel for="age">Ålder:</Blazorise.FieldLabel>
+                    <Blazorise.Control>
+                        <input type="number" id="age" @bind="@newPlayer.Age" class="form-control" />
+                    </Blazorise.Control>
+                </Blazorise.Field>
 
-        <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => AddPlayer()" class="btn btn-primary">
-            Lägg till
-        </Blazorise.Button>
-    </div>*@
+                <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => AddPlayer()" class="btn btn-primary">
+                    Lägg till
+                </Blazorise.Button>
+            </div>*@
 
-<Button Color="Color.Primary" Clicked="@ShowModal">Lägg till ny spelare</Button>
+        <Button Color="Color.Primary" Clicked="@ShowModal">Lägg till ny spelare</Button>
+    </div>
+</div>
+
 <Modal @bind-Visible="@modalVisible">
     <ModalContent Centered>
         <ModalHeader>
             <ModalTitle>
-            <Icon Name="IconName.Edit" />
-            Lägg till ny spelare</ModalTitle>
+                <Icon Name="IconName.Edit" />
+                Lägg till ny spelare
+            </ModalTitle>
             <CloseButton Clicked="@HideModal" />
         </ModalHeader>
         <ModalBody>
-            
+
             <Field>
                 <FieldLabel for="name">Namn:</FieldLabel>
                 <Control>

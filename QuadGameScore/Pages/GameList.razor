@@ -9,9 +9,10 @@
 @inject NavigationManager NavigationManager;
 
 
-<h3 class="text-primary">Grenar</h3>
+<h3 class="text-primary mb-5">Grenar</h3>
 
 <!-- Visa lista på event -->
+<h4 class="text-primary">Gren</h4>
 @if (games != null && games.Any())
 {
     <table class="table table-striped">
@@ -27,7 +28,8 @@
                 <tr>
                     <td>@gme.Name</td>
                     <td>
-                        <button class="btn btn-danger btn-sm" @onclick="() => RemoveGame(gme)">Ta bort</button>
+                        <Blazorise.Button Color="Color.Danger" Clicked="() => RemoveGame(gme)">Ta bort</Blazorise.Button>
+
                     </td>
                 </tr>
             }
@@ -41,7 +43,7 @@ else
 
 <!-- Lägg till händelse -->
 <Blazorise.Field>
-    <Blazorise.FieldLabel for="gameName">Gren:</Blazorise.FieldLabel>
+    <Blazorise.FieldLabel for="gameName" class="text-primary">Gren:</Blazorise.FieldLabel>
     <Blazorise.Control>
         <input type="text" id="gameName" class="form-control" @bind="@newGameName" />
     </Blazorise.Control>

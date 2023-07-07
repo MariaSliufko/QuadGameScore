@@ -11,17 +11,24 @@
         <div class="text-center">
             <img src="css/2.jpeg" alt="Winner Image" class="img-fluid" style="max-width: 300px;" />
 
-            <h3 class="text-primary">Slutskärm</h3>
+            @*<h3 class="text-primary">Slutskärm</h3>*@
 
             @if (winners != null && winners.Any())
             {
-                <h4>Top 3 Vinnare</h4>
+                <h4 class="text-primary">Topp 3 Vinnare</h4>
                 <ol class="list-unstyled">
                     @foreach (var winner in winners)
                     {
-                        <li>@winner.Name - @winner.Points poäng</li>
+                        <li class="d-flex justify-content-between align-items-center">
+                            <span>@winner.Name</span>
+                            <span class="badge bg-success">@winner.Points poäng</span>
+                        </li>
                     }
                 </ol>
+
+
+
+
             }
             else
             {
