@@ -1,6 +1,7 @@
 ﻿@using QuadGameScore.Data;
 @using QuadGameScore.Models;
 @using Blazorise;
+
 @page "/player"
 @inject QuadGameScoreDbContext _dbContext;
 @inject QuadGameScoreRepository repository;
@@ -42,44 +43,75 @@ else
 }
 
 <!-- Lägg till spelare -->
-<h4 class="text-primary">Lägg till spelare</h4>
+<h4 class="text-primary">Ny Spelare</h4>
 
-<div>
-    <Blazorise.Field>
-        <Blazorise.FieldLabel for="name">Namn:</Blazorise.FieldLabel>
-        <Blazorise.Control>
-            <input type="text" id="name" @bind="@newPlayer.Name" class="form-control" />
-        </Blazorise.Control>
-    </Blazorise.Field>
+@*<div>
+        <Blazorise.Field>
+            <Blazorise.FieldLabel for="name">Namn:</Blazorise.FieldLabel>
+            <Blazorise.Control>
+                <input type="text" id="name" @bind="@newPlayer.Name" class="form-control" />
+            </Blazorise.Control>
+        </Blazorise.Field>
 
-    <Blazorise.Field>
-        <Blazorise.FieldLabel for="age">Ålder:</Blazorise.FieldLabel>
-        <Blazorise.Control>
-            <input type="number" id="age" @bind="@newPlayer.Age" class="form-control" />
-        </Blazorise.Control>
-    </Blazorise.Field>
+        <Blazorise.Field>
+            <Blazorise.FieldLabel for="age">Ålder:</Blazorise.FieldLabel>
+            <Blazorise.Control>
+                <input type="number" id="age" @bind="@newPlayer.Age" class="form-control" />
+            </Blazorise.Control>
+        </Blazorise.Field>
 
-    <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => AddPlayer()" class="btn btn-primary">
-        Lägg till
-    </Blazorise.Button>
-</div>
+        <Blazorise.Button Color="Blazorise.Color.Primary" Clicked="() => AddPlayer()" class="btn btn-primary">
+            Lägg till
+        </Blazorise.Button>
+    </div>*@
+
+<Button Color="Color.Primary" Clicked="@ShowModal">Lägg till ny spelare</Button>
+<Modal @bind-Visible="@modalVisible">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>
+            <Icon Name="IconName.Edit" />
+            Lägg till ny spelare</ModalTitle>
+            <CloseButton Clicked="@HideModal" />
+        </ModalHeader>
+        <ModalBody>
+            
+            <Field>
+                <FieldLabel for="name">Namn:</FieldLabel>
+                <Control>
+                    <input type="text" id="name" @bind="@newPlayer.Name" class="form-control" />
+                </Control>
+            </Field>
+            <Field>
+                <FieldLabel for="age">Ålder:</FieldLabel>
+                <Control>
+                    <input type="number" id="age" @bind="@newPlayer.Age" class="form-control" />
+                </Control>
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@HideModal">Stäng</Button>
+            <Button Color="Color.Primary" Clicked="@AddPlayerAndHideModal">Spara ändringar</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
 
 
 <!-- Redigera spelare -->
-@if (editPlayer != null)
-{
-    <h4>Redigera spelare</h4>
-    <div>
-        <label for="editName">Namn:</label>
-        <input type="text" id="editName" @bind="@editPlayer.Name" />
+@*@if (editPlayer != null)
+    {
+        <h4>Redigera spelare</h4>
+        <div>
+            <label for="editName">Namn:</label>
+            <input type="text" id="editName" @bind="@editPlayer.Name" />
 
-        <label for="editAge">Ålder:</label>
-        <input type="number" id="editAge" @bind="@editPlayer.Age" />
+            <label for="editAge">Ålder:</label>
+            <input type="number" id="editAge" @bind="@editPlayer.Age" />
 
-        <button @onclick="UpdatePlayer">Spara</button>
-        <button @onclick="CancelEdit">Avbryt</button>
-    </div>
-}
+            <button @onclick="UpdatePlayer">Spara</button>
+            <button @onclick="CancelEdit">Avbryt</button>
+        </div>
+    }*@
 
 
 
@@ -87,17 +119,20 @@ else
     private List<Player>? players;
     private Player newPlayer = new Player(0, "", 0);
     private Player? editPlayer;
+    private Modal modalRef;
+    private bool modalVisible;
 
     protected override void OnInitialized()
     {
         players = repository.GetPlayers();
     }
 
-    private void AddPlayer()
+    private void AddPlayerAndHideModal()
     {
         repository.AddPlayer(newPlayer);
         newPlayer = new Player(0, "", 0); // Reset newPlayer
         players = repository.GetPlayers();
+        HideModal();
     }
     private void EditPlayer(Player player)
     {
@@ -128,6 +163,18 @@ else
         // Anropa repository för att hämta spelarens poäng
         var points = repository.GetPlayerPoints(player.PlayerId);
         return points;
+    }
+
+    private Task ShowModal()
+    {
+        modalVisible = true;
+        return Task.CompletedTask;
+    }
+
+    private Task HideModal()
+    {
+        modalVisible = false;
+        return Task.CompletedTask;
     }
 
 }

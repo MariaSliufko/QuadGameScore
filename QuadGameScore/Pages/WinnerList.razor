@@ -7,25 +7,27 @@
 @inject QuadGameScoreRepository repository;
 
 <Card>
-    <CardBody class="text-center">
-        <img src="css/2.jpeg" alt="Winner Image" class="img-fluid" style="max-width: 300px;" />
+    <CardBody class="d-flex flex-column align-items-center justify-content-center" style="height: 100vh;">
+        <div class="text-center">
+            <img src="css/2.jpeg" alt="Winner Image" class="img-fluid" style="max-width: 300px;" />
 
-        <h3 class="text-primary">Slutskärm</h3>
+            <h3 class="text-primary">Slutskärm</h3>
 
-        @if (winners != null && winners.Any())
-        {
-            <h4>Top 3 Vinnare</h4>
-            <ol class="list-unstyled">
-                @foreach (var winner in winners)
-                {
-                    <li>@winner.Name - @winner.Points poäng</li>
-                }
-            </ol>
-        }
-        else
-        {
-            <p>Inga vinnare hittades.</p>
-        }
+            @if (winners != null && winners.Any())
+            {
+                <h4>Top 3 Vinnare</h4>
+                <ol class="list-unstyled">
+                    @foreach (var winner in winners)
+                    {
+                        <li>@winner.Name - @winner.Points poäng</li>
+                    }
+                </ol>
+            }
+            else
+            {
+                <p>Inga vinnare hittades.</p>
+            }
+        </div>
     </CardBody>
 </Card>
 
