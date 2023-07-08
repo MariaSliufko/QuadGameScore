@@ -13,11 +13,14 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.8" />
     <PackageReference Include="Blazorise.Animate" Version="1.2.4" />
+    <PackageReference Include="FluentValidation" Version="11.6.0" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\" />
+    <None Remove="Validators\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Validators\" />
   </ItemGroup>
 </Project>

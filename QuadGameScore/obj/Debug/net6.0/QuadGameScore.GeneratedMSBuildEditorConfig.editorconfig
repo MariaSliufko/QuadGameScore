@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/Pages/InlineMessage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5saW5lTWVzc2FnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/Pages/PlayerList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGxheWVyTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
