@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nLG+i1wCb4hptuzz0wfnVspSEYfRzVAdcbEFzBgcX4/KS/67G+s8pEoP1kD8U8C8Ex+I+ZlGHjz8k57s1a72mw==",
+  "dgSpecHash": "l6PfPgY7eTrLNopn0WB6El0w1blyobF247ONi52+RvognoyXMCC794+c6VCjZj+4Ntj8B5l/ZlWOjuoP4rm6ag==",
   "success": true,
   "projectFilePath": "/Users/mariasliufko/Desktop/QuadGameScore/QuadGameScore/QuadGameScore.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "/Users/mariasliufko/.nuget/packages/blazorise.bootstrap/1.2.4/blazorise.bootstrap.1.2.4.nupkg.sha512",
     "/Users/mariasliufko/.nuget/packages/blazorise.icons.fontawesome/1.2.4/blazorise.icons.fontawesome.1.2.4.nupkg.sha512",
     "/Users/mariasliufko/.nuget/packages/blazorise.licensing/1.1.0/blazorise.licensing.1.1.0.nupkg.sha512",
+    "/Users/mariasliufko/.nuget/packages/fluentvalidation/11.6.0/fluentvalidation.11.6.0.nupkg.sha512",
     "/Users/mariasliufko/.nuget/packages/microsoft.aspnetcore.authorization/6.0.18/microsoft.aspnetcore.authorization.6.0.18.nupkg.sha512",
     "/Users/mariasliufko/.nuget/packages/microsoft.aspnetcore.components/6.0.18/microsoft.aspnetcore.components.6.0.18.nupkg.sha512",
     "/Users/mariasliufko/.nuget/packages/microsoft.aspnetcore.components.analyzers/6.0.18/microsoft.aspnetcore.components.analyzers.6.0.18.nupkg.sha512",

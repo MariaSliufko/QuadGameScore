@@ -3,11 +3,13 @@
 @using Blazorise;
 @using Blazorise.Bootstrap;
 @using Blazorise.Icons.FontAwesome;
+@using FluentValidation;
+@using QuadGameScore.Validators;
+
 @page "/gameList"
 @inject QuadGameScoreDbContext _dbContext;
 @inject QuadGameScoreRepository repository;
 @inject NavigationManager NavigationManager;
-
 
 <h3 class="text-primary mb-5">Grenar</h3>
 
@@ -29,7 +31,6 @@
                     <td>@gme.Name</td>
                     <td>
                         <Blazorise.Button Color="Color.Danger" Clicked="() => RemoveGame(gme)">Ta bort</Blazorise.Button>
-
                     </td>
                 </tr>
             }
@@ -42,52 +43,53 @@ else
 }
 
 <!-- Lägg till händelse -->
-<Blazorise.Field>
-    <Blazorise.FieldLabel for="gameName" class="text-primary">Gren:</Blazorise.FieldLabel>
-    <Blazorise.Control>
-        <input type="text" id="gameName" class="form-control" @bind="@newGameName" />
-    </Blazorise.Control>
-    <Blazorise.FieldHelp>Example help text</Blazorise.FieldHelp>
-    <Blazorise.FieldHelpValid>Bågskytte</Blazorise.FieldHelpValid>
+
+
+<EditForm Model="@newGame" OnValidSubmit="AddEvent">
+    <Blazorise.Field>
+        <Blazorise.FieldLabel for="gameName" class="text-primary">Gren:</Blazorise.FieldLabel>
+        <Blazorise.Control>
+            <input type="text" id="gameName" class="form-control" @bind="@newGame.Name" />
+            <ValidationMessage For="@(() => newGame.Name)" />
+        </Blazorise.Control>
+        <Blazorise.FieldHelp>Example help text</Blazorise.FieldHelp>
+        <Blazorise.FieldHelpValid>Bågskytte</Blazorise.FieldHelpValid>
+        <InlineMessage ErrorMessage="@errorMessage" />
+    </Blazorise.Field>
+
     <Blazorise.FieldButton>
-        <button class="btn btn-primary" @onclick="AddEvent">Lägg till</button>
+        <button class="btn btn-primary" type="submit">Lägg till</button>
     </Blazorise.FieldButton>
-</Blazorise.Field>
-
-
+</EditForm>
+<BlazoredToastContainer />
 
 @code {
     private List<Game> games;
-    private string newGameName;
-    private Game newGame;
+    private Game newGame = new Game("");
+    private GameValidator validator = new GameValidator();
+    private string errorMessage;
 
     protected override void OnInitialized()
     {
         games = repository.GetGames();
     }
 
-
-    // Metoder för händelseoperationer
-    public List<Game> GetGames()
-    {
-        return _dbContext.Games.ToList();
-    }
-
-    public void AddGame(Game newGame)
-    {
-        _dbContext.Games.Add(newGame);
-        _dbContext.SaveChanges();
-    }
-
     private void AddEvent()
     {
-        if (!string.IsNullOrEmpty(newGameName))
+        var validationResult = validator.Validate(newGame);
+
+        if (validationResult.IsValid)
         {
-            var newGame = new Game(newGameName);
-            repository.AddGame(newGame);
-            newGameName = string.Empty;
+            var game = new Game(newGame.Name);
+            repository.AddGame(game);
+            newGame = new Game(""); // Återställ formuläret genom att skapa en ny Game-instans
             games = repository.GetGames();
         }
+        else
+        {
+            errorMessage = validationResult.Errors.FirstOrDefault()?.ErrorMessage;
+        }
+
     }
 
     private void RemoveGame(Game game)
@@ -95,6 +97,4 @@ else
         repository.RemoveGame(game);
         games = repository.GetGames();
     }
-
 }
-

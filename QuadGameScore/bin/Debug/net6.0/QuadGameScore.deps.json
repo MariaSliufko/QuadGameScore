@@ -12,6 +12,7 @@
           "Blazorise.Animate": "1.2.4",
           "Blazorise.Bootstrap": "1.2.4",
           "Blazorise.Icons.FontAwesome": "1.2.4",
+          "FluentValidation": "11.6.0",
           "Microsoft.EntityFrameworkCore": "7.0.8",
           "Microsoft.EntityFrameworkCore.InMemory": "7.0.8"
         },
@@ -80,6 +81,14 @@
           "lib/net6.0/Blazorise.Licensing.dll": {
             "assemblyVersion": "1.1.0.0",
             "fileVersion": "1.1.0.0"
+          }
+        }
+      },
+      "FluentValidation/11.6.0": {
+        "runtime": {
+          "lib/net6.0/FluentValidation.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.6.0.0"
           }
         }
       },
@@ -327,6 +336,13 @@
       "sha512": "sha512-QDHl4m8ixmq+xIsW3d0kHBpJYJPqMBzbNCFhtEsqSrmrAPMEmSVm6r9pprkgT51leeqvkPxuy22Osiql48KgDQ==",
       "path": "blazorise.licensing/1.1.0",
       "hashPath": "blazorise.licensing.1.1.0.nupkg.sha512"
+    },
+    "FluentValidation/11.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-DWKd0jHA33d7BXVWytSoN5Oafj9nYuiLUyyFoaUboOZZiaN5tlXdcJpkRbmrrWBUTWdSxjTwIoyUs38KSU/7OQ==",
+      "path": "fluentvalidation/11.6.0",
+      "hashPath": "fluentvalidation.11.6.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization/6.0.18": {
       "type": "package",

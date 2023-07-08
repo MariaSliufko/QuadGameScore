@@ -23,6 +23,9 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddScoped<QuadGameScoreRepository>();
+//builder.Services.AddScoped<IToastService, ToastService>();
+//builder.Services.AddBlazoredToast();
+
 
 // Configure DbContext for in-memory database
 builder.Services.AddDbContext<QuadGameScoreDbContext>(options =>
